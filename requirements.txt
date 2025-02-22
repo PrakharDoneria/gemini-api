@@ -6,3 +6,4 @@ Werkzeug==3.0.6
 google-genai
 generativeai
 google-generativeai
+flask-cors

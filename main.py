@@ -1,6 +1,7 @@
 import os
 from flask import Flask, request, jsonify
 import google.generativeai as genai
+from flask_cors import CORS  # Import CORS
 
 # Configure the API key for Gemini
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
@@ -22,6 +23,9 @@ model = genai.GenerativeModel(
 
 # Create Flask app
 app = Flask(__name__)
+
+# Enable CORS for all routes
+CORS(app, resources={r"/generate": {"origins": "https://sunosynth-ai.web.app"}})  # You can specify allowed origins
 
 # Route to handle POST requests for chat generation
 @app.route('/generate', methods=['POST'])
