@@ -25,7 +25,8 @@ model = genai.GenerativeModel(
 app = Flask(__name__)
 
 # Enable CORS for all routes
-CORS(app, resources={r"/generate": {"origins": "https://sunosynth-ai.web.app"}})  # You can specify allowed origins
+CORS(app, resources={r"/generate": {"origins": ["https://sunosynth-ai.web.app", "https://sunosynth-web.vercel.app"]}})
+# You can specify allowed origins
 
 # Route to handle POST requests for chat generation
 @app.route('/generate', methods=['POST'])
